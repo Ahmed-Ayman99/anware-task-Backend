@@ -15,7 +15,6 @@ import ExpressMongoSanitize from "express-mongo-sanitize";
 const app = express();
 
 app.use("/public", express.static("./public"));
-app.use(express.json({ limit: "10kb" }));
 
 app.use(cors({ credentials: true }));
 app.options("*", cors());
@@ -26,7 +25,6 @@ if (process.env.NODE_ENV === "development") app.use(morgan("dev"));
 app.use(helmet());
 app.use(ExpressMongoSanitize());
 app.use(xss());
-
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json({ limit: "10kb" }));
